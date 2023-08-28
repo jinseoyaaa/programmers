@@ -16,3 +16,29 @@ P처럼 소수 양쪽에 아무것도 없는 경우
 3 ≤ k ≤ 10
 '''
 
+def conv(n, k):
+    s = ''
+    while n:
+        s += str(n%k)
+        n //= k
+    return s[::-1]
+
+def isprime(n):
+    if n <= 1: return False
+    i = 2
+    while i*i <= n:
+        if n%i == 0: return False
+        i += 1
+    return True
+        
+def solution(n, k):
+    s = conv(n, k)
+    cnt = 0
+    for num in s.split('0'):
+        if not num: continue
+        if isprime(int(num)): cnt += 1
+    return cnt
+
+n = 437674
+k = 3
+solution(n, k)   # 3
